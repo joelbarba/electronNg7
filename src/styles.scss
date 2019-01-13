@@ -1,1 +1,82 @@
 /* You can add global styles to this file, and also import other style files */
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$primary: #06bbb3;
+$navbar-dark-color:                 $white;
+$navbar-dark-hover-color:           $gray-500;
+$navbar-dark-active-color:          $gray-700;
+$navbar-dark-disabled-color:        rgba($white, .25) !default;
+$navbar-dark-toggler-border-color:  rgba($white, .1) !default;
+$navbar-dark-brand-color: $white;
+$navbar-dark-brand-hover-color: $white;
+
+@import "~bootstrap/scss/bootstrap.scss";
+
+$theme-colors: map-merge(
+  (
+    "primary":      $primary,
+    "primary008":  rgba($primary, 0.08)
+  ),
+  $theme-colors
+);
+
+body {
+  background: whitesmoke;
+}
+.container {
+  max-width: none;
+}
+.navbar-dark {
+  background: $primary;
+}
+
+@import "~bf-icomoon/css/icomoon.css";
+
+
+$primary: #06bbb3;
+
+ul.table-list {
+  width: 100%;
+  height: auto;
+  float: left;
+  list-style: none;
+  box-shadow: 0 1px 2px rgba(34,36,38,.15);
+  border-radius: 3px;
+  li.list-header {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    padding: 8px 15px;
+    background: $primary;
+    color: #FFF;
+    word-break: break-word;
+    h5 {
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+  }
+  li.list-row {
+    padding: 8px 15px;
+    word-break: break-word;
+    &:nth-child(even) {
+      background: rgba($primary, 0.08);
+    }
+    &:nth-child(odd) {
+      background: #FFF;
+    }
+    h5 {
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-12">
+    <h1>Acc Pots ({{accPots.loadedList.length}})</h1>
+    <!-- <button class="btn btn-primary">Click Me</button> -->
+  </div>
+
+  <div class="col-12">
+    <div class="row">
+      <div class="form-group col-8">
+        <!-- <input type="text" class="form-control" name="searchText" placeholder="Search..."
+               [(ngModel)]="listConfig.filterText"> -->
+        <!-- <input type="text" class="form-control" #search> -->
+
+        <input type="text" class="form-control" name="searchText" placeholder="Search..."
+               [(ngModel)]="accPots.filterText"
+               (ngModelChange)="accPots.setFilter.next($event)" />
+      </div>
+
+      <div class="col-4 text-right">
+        <button class="btn btn-primary" id="myButton">Add New</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    Page: {{accPots.currentPage}} of {{accPots.totalPages}} (rowsPerPage={{accPots.rowsPerPage}})
+
+    <ul class="list-unstyled table-list">
+      <li class="list-header">
+        <div class="row">
+
+          <!-- Pos -->
+          <!-- <div class="col-2">
+            <h5 (click)="accPots.setOrder.next('pos')">
+              <span>Pos</span>
+              <span [hidden]="accPots.orderField === 'pos'" class="icon-sort"></span>
+              <span [hidden]="accPots.orderField !== 'pos'">
+                <span [hidden]="accPots.orderReverse" class="icon-arrow-down7"></span>
+                <span [hidden]="!accPots.orderReverse" class="icon-arrow-up7"></span>
+              </span>
+            </h5>
+          </div> -->
+
+          <app-list-header-col class="col-2" [colTitle]="'Pos'"     [fieldName]="'pos'"     [orderSettings]="accPots"></app-list-header-col>
+          <app-list-header-col class="col-5" [colTitle]="'Name'"    [fieldName]="'name'"    [orderSettings]="accPots"></app-list-header-col>
+          <app-list-header-col class="col-3" [colTitle]="'Amount'"  [fieldName]="'amount'"  [orderSettings]="accPots"></app-list-header-col>
+        </div>
+      </li>
+      <li *ngFor="let accPot of accPots.renderedList" class="list-row">
+        <div class="row">
+          <div class="col-2"><h5>{{accPot.pos}}</h5></div>
+          <div class="col-5"><h5>{{accPot.name}}</h5></div>
+          <div class="col-3"><h5>{{accPot.amount}}</h5></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-12 text-right">
+    <button class="btn btn-primary"      (click)="accPots.setPage.next(-1)">Page -</button>
+    <button class="btn btn-primary ml-5" (click)="accPots.setPage.next(+1)">Page +</button>
+  </div>
+
+  <!-- <ul *ngIf="!!(myObs$ | async)">
+      myObs$={{myObs$}}
+    <li *ngFor="let accPot of myObs$ | async">
+      <span class="badge">{{accPot.id}}</span>
+      <span class="badge">{{accPot.name}}</span>
+    </li>
+  </ul> -->
+</div>
