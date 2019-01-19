@@ -10,6 +10,7 @@
         <!-- <input type="text" class="form-control" name="searchText" placeholder="Search..."
                [(ngModel)]="listConfig.filterText"> -->
         <!-- <input type="text" class="form-control" #search> -->
+        <input type="text" (input)="myTitle = $event.target.value" [value]="myTitle">
 
         <input type="text" class="form-control" name="searchText" placeholder="Search..."
                [(ngModel)]="accPots.filterText"
@@ -25,30 +26,21 @@
   <div class="col-12">
     Page: {{accPots.currentPage}} of {{accPots.totalPages}} (rowsPerPage={{accPots.rowsPerPage}})
 
+
+
     <ul class="list-unstyled table-list">
       <li class="list-header">
         <div class="row">
-
-          <!-- Pos -->
-          <!-- <div class="col-2">
-            <h5 (click)="accPots.setOrder.next('pos')">
-              <span>Pos</span>
-              <span [hidden]="accPots.orderField === 'pos'" class="icon-sort"></span>
-              <span [hidden]="accPots.orderField !== 'pos'">
-                <span [hidden]="accPots.orderReverse" class="icon-arrow-down7"></span>
-                <span [hidden]="!accPots.orderReverse" class="icon-arrow-up7"></span>
-              </span>
-            </h5>
-          </div> -->
-
-          <app-list-header-col class="col-2" [colTitle]="'Pos'"     [fieldName]="'pos'"     [orderSettings]="accPots"></app-list-header-col>
+          <app-list-header-col (orderEvent)="myVar=$event" class="col-2" [colTitle]="'Pos'"     [fieldName]="'pos'"     [orderSettings]="accPots"></app-list-header-col>
           <app-list-header-col class="col-5" [colTitle]="'Name'"    [fieldName]="'name'"    [orderSettings]="accPots"></app-list-header-col>
           <app-list-header-col class="col-3" [colTitle]="'Amount'"  [fieldName]="'amount'"  [orderSettings]="accPots"></app-list-header-col>
         </div>
       </li>
       <li *ngFor="let accPot of accPots.renderedList" class="list-row">
         <div class="row">
-          <div class="col-2"><h5>{{accPot.pos}}</h5></div>
+          <div class="col-2">
+            <h5>{{accPot.pos}}</h5>
+          </div>
           <div class="col-5"><h5>{{accPot.name}}</h5></div>
           <div class="col-3"><h5>{{accPot.amount}}</h5></div>
         </div>

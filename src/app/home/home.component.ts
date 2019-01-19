@@ -43,10 +43,10 @@ export class HomeComponent implements OnInit {
 
 
     this.ipc.callApi('acc_pots:get').subscribe((resp: any) => {
-      this.ngZone.run(() => {
+      // this.ngZone.run(() => {
         console.log('resp.result', resp.result);
         this.accPots.setContent.next(resp.result);
-      });
+      // });
     });
 
     // List content
