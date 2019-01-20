@@ -1,17 +1,17 @@
 import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
-import { IpcService } from '../ipc.service';
-import { FormsModule } from '@angular/forms';
+import { IpcService } from '../../../ipc.service';
+// import { FormsModule } from '@angular/forms';
 import * as Rx from 'rxjs';
 import * as RxOp from 'rxjs/operators';
 import * as RxExt from 'rxjs/internal/observable/fromPromise';
 import { ConstantPool, Statement, isNgTemplate } from '@angular/compiler';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-pots-list',
+  templateUrl: './pots-list.component.html',
+  styleUrls: ['./pots-list.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class PotsListComponent implements OnInit {
   public myTitle = 'Heeey there';
   public myObs$;
   public accPots = {

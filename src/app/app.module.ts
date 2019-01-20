@@ -1,25 +1,25 @@
 import { ipcRenderer } from 'electron';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, FormControl, FormGroup } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { ListHeaderColComponent } from './list-header-col/list-header-col.component';
+import { JbUiLibModule } from './jb-ui-lib/jb-ui-lib.module';
+import { ShellUiModule } from './shell-ui/shell-ui.module';
+import { PagesModule } from './pages/pages.module';
+import { PotsModule } from './pages/pots/pots.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     ListHeaderColComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    // FormControl,
-    // FormGroup,
-    ReactiveFormsModule,
+    // JbUiLibModule,
+    ShellUiModule,
+    PagesModule,
+    // PotsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
