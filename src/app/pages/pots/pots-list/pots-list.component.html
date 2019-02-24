@@ -1,42 +1,31 @@
 <div class="row">
-    <div class="col-12">
-      <h1>Acc Pots ({{accPots.loadedList.length}})</h1>
-      <!-- <button class="btn btn-primary">Click Me</button> -->
-    </div>
+  <div class="col-12">
+    <h1>Acc Pots</h1>
+  </div>
 
     <div class="col-12">
       <div class="row">
         <div class="form-group col-8">
-          <!-- <input type="text" class="form-control" name="searchText" placeholder="Search..."
-                 [(ngModel)]="listConfig.filterText"> -->
-          <!-- <input type="text" class="form-control" #search> -->
-          <input type="text" (input)="myTitle = $event.target.value" [value]="myTitle">
-
-          <input type="text" class="form-control" name="searchText" placeholder="Search..."
-                 [(ngModel)]="accPots.filterText"
-                 (ngModelChange)="accPots.setFilter.next($event)" />
+          <input type="text" class="form-control" name="searchText" placeholder="Search"
+                  [ngModel]="potsList.searchText" (ngModelChange)="potsList.filter($event)">
         </div>
 
         <div class="col-4 text-right">
-          <button class="btn btn-primary" id="myButton">Add New</button>
+          <bf-btn bfType="add" bfText="Add New" ></bf-btn>
         </div>
       </div>
     </div>
 
     <div class="col-12">
-      Page: {{accPots.currentPage}} of {{accPots.totalPages}} (rowsPerPage={{accPots.rowsPerPage}})
-
-
-
       <ul class="list-unstyled table-list">
         <li class="list-header">
           <div class="row">
-            <!-- <app-list-header-col (orderEvent)="myVar=$event" class="col-2" [colTitle]="'Pos'"     [fieldName]="'pos'"     [orderSettings]="accPots"></app-list-header-col> -->
-            <!-- <app-list-header-col class="col-5" [colTitle]="'Name'"    [fieldName]="'name'"    [orderSettings]="accPots"></app-list-header-col> -->
-            <!-- <app-list-header-col class="col-3" [colTitle]="'Amount'"  [fieldName]="'amount'"  [orderSettings]="accPots"></app-list-header-col> -->
+            <bf-list-header-col class="col-2" colTitle="Pos"     fieldName="pos"     [orderConf]="potsList.orderConf"></bf-list-header-col>
+            <bf-list-header-col class="col-5" colTitle="Name"    fieldName="name"    [orderConf]="potsList.orderConf"></bf-list-header-col>
+            <bf-list-header-col class="col-3" colTitle="Amount"  fieldName="amount"  [orderConf]="potsList.orderConf"></bf-list-header-col>
           </div>
         </li>
-        <li *ngFor="let accPot of accPots.renderedList" class="list-row">
+        <li *ngFor="let accPot of potsList.renderList$ | async" class="list-row">
           <div class="row">
             <div class="col-2">
               <h5>{{accPot.pos}}</h5>
@@ -49,9 +38,12 @@
     </div>
 
     <div class="col-12 text-right">
-      <button class="btn btn-primary"      (click)="accPots.setPage.next(-1)">Page -</button>
-      <button class="btn btn-primary ml-5" (click)="accPots.setPage.next(+1)">Page +</button>
+      <bf-btn bfIcon="icon-arrow-left6"  (onClick)="potsList.prevPage()"></bf-btn>
+      <span class="spacerL15 spacerR15">Page: {{potsList.currentPage}} of {{potsList.totalPages}} ({{potsList.rowsPerPage}} x page)</span>
+      <bf-btn bfIcon="icon-arrow-right3" (onClick)="potsList.nextPage()"></bf-btn>
     </div>
+
+  potsList.fields={{potsList.orderConf.fields | json }}
 
     <!-- <ul *ngIf="!!(myObs$ | async)">
         myObs$={{myObs$}}

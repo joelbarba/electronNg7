@@ -1,27 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
-
-$white:    #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
-$black:    #000 !default;
-
-$primary: #06bbb3;
-$navbar-dark-color:                 $white;
-$navbar-dark-hover-color:           $gray-500;
-$navbar-dark-active-color:          $gray-700;
-$navbar-dark-disabled-color:        rgba($white, .25) !default;
-$navbar-dark-toggler-border-color:  rgba($white, .1) !default;
-$navbar-dark-brand-color: $white;
-$navbar-dark-brand-hover-color: $white;
-
+@import "~bf-icomoon/css/icomoon.css";
+@import 'scss/variables.scss';
 @import "~bootstrap/scss/bootstrap.scss";
+@import 'scss/color-layer.scss';
+@import 'scss/helpers.scss';
 
 $theme-colors: map-merge(
   (
@@ -41,10 +22,6 @@ body {
   background: $primary;
 }
 
-@import "~bf-icomoon/css/icomoon.css";
-
-
-$primary: #06bbb3;
 
 ul.table-list {
   width: 100%;
